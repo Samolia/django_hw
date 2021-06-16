@@ -35,6 +35,6 @@ def workdir_view(request):
     # по аналогии с `time_view`, напишите код,
     # который возвращает список файлов в рабочей 
     # директории
-    workdir = '<br>'.join(os.listdir(path=r'C:/Users/Samolia/my/IT/django/dj-homeworks/first-project/first_project'))
+    workdir = '<br>'.join(os.listdir())
     msg = f'Содержание рабочей директории:<br> {workdir}'
     return HttpResponse(msg)
