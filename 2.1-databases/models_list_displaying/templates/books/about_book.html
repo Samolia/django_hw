@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог книг{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/books">Каталог</a></h1>
+        </div>
+        <div class="row">
+            {%  for book in books_catalog %}
+                <div class="book col-md-6">
+                    <h3>{{ book.name }}</h3>
+                    <p>Автор: {{ book.author }}</p>
+                    <p>Дата публикации: {{ book.pub_date|date:"Y-m-d" }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="'row">
+            {% if not next_page %}
+                <div class="btn-group">
+                    <a href="/books/{{ prev_page }}" class="btn btn-primary">< {{ prev_page }}</a>
+                </div>
+            {% elif not prev_page %}
+                <div class="btn-group">
+                    <a href="/books/{{ next_page }}" class="btn btn-primary">{{ next_page }} ></a>
+                </div>
+            {%  else %}
+                <div class="btn-group">
+                    <a href="/books/{{ prev_page }}" class="btn btn-primary">< {{ prev_page }}</a>
+                    <a href="/books/{{ next_page }}" class="btn btn-primary">{{ next_page }} ></a>
+                </div>
+            {%  endif %}
+        </div>
+    </div>
+{% endblock %}

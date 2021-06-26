@@ -55,6 +55,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'netology_models_list',
+        'USER': 'samolia',
+        'PASSWORD': 'samolia',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -119,3 +121,24 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        'django.db': {
+            'handlers': ['console'],
+            'level': DEBUG,
+            'propagate': False,
+        },
+    },
+}
