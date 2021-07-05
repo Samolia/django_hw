@@ -1,13 +1,18 @@
 from django.contrib import admin
 
-from .models import Student, Teacher
+from .models import Student, Teacher, Group
 
 
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
-    pass
+class GroupInline(admin.TabularInline):
+    model = Group
+    extra = 1
 
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
-    pass
+    inlines = (GroupInline,)
+
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    inlines = (GroupInline,)
