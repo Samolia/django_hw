@@ -4,12 +4,12 @@
 {% block title %}Список учеников{% endblock %}
 {% block content %}
     <div class="row">
-        {% for item in object_list %}
+        {% for student in object_list %}
             <div class="col-md-8">
                 <p class="my-1" style="color:#00ff00">Ученик:</p>
-                <p class="my-1">{{ item.student.name }} {{ item.student.group }}</p>
+                <p class="my-1">{{ student.name }} {{ student.group }}</p>
                 <p class="my-1" style="color:#0073ff">Преподаватели:</p>
-                {% for teacher in item.teachers.all %}
+                {% for teacher in student.teacher.all %}
                     <p class="my-1">{{ teacher.name }} - {{ teacher.subject }}</p>
                 {% endfor %}
             </div>
