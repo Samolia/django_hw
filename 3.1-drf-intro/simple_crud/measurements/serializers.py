@@ -11,5 +11,5 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class MeasurementSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Project
+        model = Measurement
         fields = '__all__'
