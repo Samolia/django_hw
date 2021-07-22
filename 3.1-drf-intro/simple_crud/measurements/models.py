@@ -30,7 +30,7 @@ class Measurement(TimestampFields):
 
     value = models.FloatField()
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='media')
 
     def __str__(self):
         return f'{self.project} - {self.value}'
