@@ -23,7 +23,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advertisement
         fields = ('id', 'title', 'description', 'creator',
-                  'status', 'created_at', )
+                  'status', 'created_at', 'favorites',)
 
     def create(self, validated_data):
         """Метод для создания"""
@@ -39,6 +39,8 @@ class AdvertisementSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         """Метод для валидации. Вызывается при создании и обновлении."""
+
+        creator = ...
 
         # TODO: добавьте требуемую валидацию
 
