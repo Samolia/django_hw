@@ -1,31 +1,8 @@
 # примеры API-запросов
 
-# получение объявлений
+# получение объявлений (могут получить даже не аутентифицированные пользователи)
 GET http://localhost:8000/api/advertisements/
 Content-Type: application/json
-
-###
-
-# создание объявления
-POST http://localhost:8000/api/advertisements/
-Content-Type: application/json
-Authorization: Token 5c53364211d2c45edd107b82cec4ae3eab5d371a
-
-{
-  "title": "Машина",
-  "description": "Хендай элантра, 1.6, 122 лс, 2008 г.в."
-}
-
-###
-
-# попытка поменять объявление
-PATCH http://localhost:8000/api/advertisements/2/
-Content-Type: application/json
-Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
-
-{
-  "status": "CLOSED"
-}
 
 ###
 
@@ -36,5 +13,41 @@ Content-Type: application/json
 ###
 
 # фильтрация по дате
-GET http://localhost:8000/api/advertisements/?created_at_before=2020-10-01
+GET http://localhost:8000/api/advertisements/?created_at_before=2021-10-10
 Content-Type: application/json
+
+###
+
+# получение черновика объявлений (может получить только владелец)
+GET http://localhost:8000/api/advertisements/?status=DRAFT
+Content-Type: application/json
+Authorization: Token 5c53364211d2c45edd107b82cec4ae3eab5d371a
+
+###
+
+# создание объявления (могут создавать только аутентифицированные пользователи)
+POST http://localhost:8000/api/advertisements/
+Content-Type: application/json
+Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
+
+{
+  "title": "Шкаф IKEA",
+  "description": "Срочно"
+}
+
+###
+
+# поменять объявление (может только владелец или админ)
+PATCH http://localhost:8000/api/advertisements/3/
+Content-Type: application/json
+Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
+
+{
+  "status": "OPEN"
+}
+
+###
+
+# удаление объявления (может только владелец или админ)
+DELETE http://localhost:8000/api/advertisements/2/
+Authorization: Token 5c53364211d2c45edd107b82cec4ae3eab5d371a

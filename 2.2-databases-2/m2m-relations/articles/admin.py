@@ -15,7 +15,7 @@ class ScopeInlineFormset(BaseInlineFormSet):
             if form.cleaned_data.get('tag'):
                 has_tag = True
 
-        if has_tag < 1 and is_main_tag:
+        if has_tag and is_main_tag < 1:
             raise ValidationError('Укажите основной раздел')
         elif is_main_tag > 1:
             raise ValidationError('Основным может быть только один раздел')

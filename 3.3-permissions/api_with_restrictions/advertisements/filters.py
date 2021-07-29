@@ -7,13 +7,9 @@ class AdvertisementFilter(filters.FilterSet):
     """Фильтры для объявлений."""
 
     creator = 'creator__id'
-
     created_at = filters.DateFromToRangeFilter()
-
     status = filters.MultipleChoiceFilter(choices=AdvertisementStatusChoices.choices)
-
-    favorites = 'favorites'
 
     class Meta:
         model = Advertisement
-        fields = ['creator', 'created_at', 'status', 'favorites']
+        fields = ['creator', 'created_at', 'status']
