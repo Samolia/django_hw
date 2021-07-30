@@ -1,4 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
@@ -28,5 +29,7 @@ class AdvertisementViewSet(ModelViewSet):
         queryset = Advertisement.objects.filter(status__in=['OPEN', 'CLOSED'])
         if self.request.user.is_authenticated:
             draft = Advertisement.draft_objects.filter(creator=self.request.user)
+            if not draft and self.action == 'list':
+                raise NotFound({'detail': 'У вас нет объявлений в черновиках'})
             return queryset | draft
         return queryset

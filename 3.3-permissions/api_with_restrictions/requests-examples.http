@@ -38,7 +38,7 @@ Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
 ###
 
 # поменять объявление (может только владелец или админ)
-PATCH http://localhost:8000/api/advertisements/3/
+PATCH http://localhost:8000/api/advertisements/4/
 Content-Type: application/json
 Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
 
@@ -49,5 +49,5 @@ Authorization: Token c1bb458f396ffe30f2e176664afc98f799fd17af
 ###
 
 # удаление объявления (может только владелец или админ)
-DELETE http://localhost:8000/api/advertisements/2/
+DELETE http://localhost:8000/api/advertisements/38/
 Authorization: Token 5c53364211d2c45edd107b82cec4ae3eab5d371a
