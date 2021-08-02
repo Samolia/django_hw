@@ -29,7 +29,7 @@ def test_get_course_list(api_client, course_factory):
 def test_get_course_filtered_by_id(api_client, course_factory):
     """проверка фильтрации списка курсов по id"""
     course_factory(_quantity=7)
-    url = "%s?id=3" % reverse('courses-list')
+    url = '%s?id=3' % reverse('courses-list')
     response = api_client.get(url)
     assert response.status_code == status.HTTP_200_OK
     assert response.data[0]['id'] == 3
@@ -43,7 +43,7 @@ def test_get_course_filtered_by_name(api_client, course_factory):
         Course(name='Python'),
         Course(name='C#')
     ])
-    url = "%s?name=Python" % reverse('courses-list')
+    url = '%s?name=Python' % reverse('courses-list')
     response = api_client.get(url)
     assert response.status_code == status.HTTP_200_OK
     assert response.data[0]['name'] == 'Python'
